@@ -34,15 +34,21 @@ const tabs = document.querySelectorAll('.tabheader__item'),
      
 
       //timer
-     const deadLine = "2022-08-23";
+     const deadLine = "2022-08-30";
      function getTimeRemaining(endtime){
-      const t = Date.parse(endtime) - Date.parse(new Date()),
-            day = Math.floor(t / (1000 * 60 * 60 * 24)),
-            hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-            minutes = Math.floor( (t / 1000 / 60) % 60),
-            seconds = Math.floor( (t /  1000 ) % 60);
-
-
+      let day,hours,minutes,seconds;
+      const t = Date.parse(endtime) - Date.parse(new Date());    
+            if( t <= 0){
+              day = 0;
+              hours = 0;
+              minutes = 0;
+              seconds = 0;
+            } else{
+              day = Math.floor(t / (1000 * 60 * 60 * 24)),
+              hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+              minutes = Math.floor( (t / 1000 / 60) % 60),
+              seconds = Math.floor( (t /  1000 ) % 60);
+            }
             return {
               'total':t,
               'days':day,
@@ -81,6 +87,58 @@ const tabs = document.querySelectorAll('.tabheader__item'),
              }
      }
      setClock('.timer' , deadLine);
+
+     //modal
+     
+     const modalTrigger = document.querySelectorAll("[data-modal]"),
+           modal = document.querySelector('.modal'),
+           modalCloseBtn = document.querySelector('[data-close]');
+
+
+    // Без тоггл
+        //  modalTrigger[0].addEventListener('click', () =>{
+        //   modal.classList.add("show");
+        //   modal.classList.remove("hide");
+        //   document.body.style.overflow = "hidden";
+        //  });
+        //  modalCloseBtn.addEventListener("click",function(e){
+        //   modal.classList.add("hide");
+        //   modal.classList.remove("show");
+        //   document.body.style.overflow = "scroll";
+        //  });
+    // С тоггл
+         modalTrigger[0].addEventListener('click', () =>{
+          modal.classList.add("show");
+          modal.classList.remove("hide");
+          document.body.style.overflow = "hidden";
+         });
+         modalCloseBtn.addEventListener("click",function(e){
+          modal.classList.add("hide");
+          modal.classList.remove("show");
+          document.body.style.overflow = "scroll";
+         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
 
