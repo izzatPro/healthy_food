@@ -93,30 +93,79 @@ const tabs = document.querySelectorAll('.tabheader__item'),
      const modalTrigger = document.querySelectorAll("[data-modal]"),
            modal = document.querySelector('.modal'),
            modalCloseBtn = document.querySelector('[data-close]');
+  
+    function openModal(){
+      modal.classList.add("show");
+      modal.classList.remove("hide");
+      document.body.style.overflow = "hidden";
+      clearInterval(modalTimerId);
+    }
+    modalTrigger.forEach(btn =>{
+      btn.addEventListener('click',openModal);
+    });
 
 
-    // Без тоггл
-        //  modalTrigger[0].addEventListener('click', () =>{
-        //   modal.classList.add("show");
-        //   modal.classList.remove("hide");
+    function closeModal(){
+    modal.classList.add("hide");
+    modal.classList.remove("show");
+    document.body.style.overflow = "scroll";
+    };
+    modalCloseBtn.addEventListener("click", closeModal); 
+
+    modal.addEventListener("click" ,(e) =>{
+      if (e.target == modal){
+            closeModal();
+          }
+         });
+
+
+        document.addEventListener('keydown', (e)=>{
+         if(e.code == "Escape" && modal.classList.contains("show")){
+          closeModal();
+         }
+        });
+        
+        const modalTimerId = setTimeout(openModal,5000);
+
+        function showModalByScroll(){
+          //Долистал до конца
+          if ( window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight){
+            openModal();
+            window.removeEventListener('scroll' , showModalByScroll);
+          }
+        }
+
+
+
+        window.addEventListener('scroll', showModalByScroll);
+//Нам нужно, чтобы модалка в конце один раз появилась
+//А она появляется по кд
+//Мы могли бы использовать addEventListener 3й аргумент
+//{once:true};
+//Однако этот аргумент сразу при скролле сработает, и модалка
+//Даже не появится тк за сек мы не успеем функцию выполнить
+
+
+
+
+
+
+
+
+// Принцип драй гласит о том, что мы не должны повторять код который у нас есть уже в скриптах.
+
+
+
+
+    // С тоггл
+        //   modalTrigger[0].addEventListener('click', () =>{
+        //   modal.classList.toggle("show");
         //   document.body.style.overflow = "hidden";
         //  });
         //  modalCloseBtn.addEventListener("click",function(e){
-        //   modal.classList.add("hide");
-        //   modal.classList.remove("show");
+        //   modal.classList.toggle("show");
         //   document.body.style.overflow = "scroll";
         //  });
-    // С тоггл
-         modalTrigger[0].addEventListener('click', () =>{
-          modal.classList.add("show");
-          modal.classList.remove("hide");
-          document.body.style.overflow = "hidden";
-         });
-         modalCloseBtn.addEventListener("click",function(e){
-          modal.classList.add("hide");
-          modal.classList.remove("show");
-          document.body.style.overflow = "scroll";
-         });
 
 
 
