@@ -125,7 +125,7 @@ const tabs = document.querySelectorAll('.tabheader__item'),
          }
         });
         
-        const modalTimerId = setTimeout(openModal,5000);
+        // const modalTimerId = setTimeout(openModal,5000);
 
         function showModalByScroll(){
           //Долистал до конца
@@ -138,34 +138,8 @@ const tabs = document.querySelectorAll('.tabheader__item'),
 
 
         window.addEventListener('scroll', showModalByScroll);
-//Нам нужно, чтобы модалка в конце один раз появилась
-//А она появляется по кд
-//Мы могли бы использовать addEventListener 3й аргумент
-//{once:true};
-//Однако этот аргумент сразу при скролле сработает, и модалка
-//Даже не появится тк за сек мы не успеем функцию выполнить
 
-
-
-
-
-
-
-
-// Принцип драй гласит о том, что мы не должны повторять код который у нас есть уже в скриптах.
-
-
-
-
-    // С тоггл
-        //   modalTrigger[0].addEventListener('click', () =>{
-        //   modal.classList.toggle("show");
-        //   document.body.style.overflow = "hidden";
-        //  });
-        //  modalCloseBtn.addEventListener("click",function(e){
-        //   modal.classList.toggle("show");
-        //   document.body.style.overflow = "scroll";
-        //  });
+    j
 
 
 
@@ -192,38 +166,8 @@ const tabs = document.querySelectorAll('.tabheader__item'),
 });
 
 
-//tabs
-// document.addEventListener('DOMContentLoaded',() =>{
-//     const tabs = document.querySelectorAll('.tabheader__item'),
-//           tabsContent = document.querySelectorAll('.tabcontent'),
-//           tabsParent = document.querySelector('.tabheader__items');
-//           function hideTabContent(){
-//             tabsContent.forEach((item) =>{
-//             item.style.display = "none";
-//             });
-//             tabs.forEach((item) =>{
-//             item.classList.remove("tabheader__item_active");
-//             });
-//           }
-//           function showTabContent(i = 0){
-//             tabsContent[i].style.display = "block";
-//             tabs[i].classList.add("tabheader__item_active");
-//           }
-//           hideTabContent();
-//           showTabContent();  
-    
-//           tabsParent.addEventListener('click' , (e) =>{
-//           let target = e.target;
-//           if(target && target.classList.contains("tabheader__item")){
-//             tabs.forEach((item,i) =>{
-//              if( target == item ){
-//              hideTabContent();
-//              showTabContent(i);
-//              }
-//             });
-//           } 
-//           });
-//     });
+
+
 
 
 
